@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\User\UserResource;
+use App\AuctionHouse;
 
 class AuctionHouseResource extends BaseResource
 {
@@ -18,6 +19,7 @@ class AuctionHouseResource extends BaseResource
         return [
             'id' => (int)$this->id,
             'name' => $this->name,
+            'description' => $this->desctiption,
             'address' => $this->address,
             'address_co' => $this->address_co,
             'zip_code' => $this->zip_code,
@@ -25,8 +27,8 @@ class AuctionHouseResource extends BaseResource
             'country' => $this->country,
             'email' => $this->email,
             'phone' => $this->phone,
+            'rating' => AuctionHouse::rating($this->id),
             'meta' => $this->meta('auction-houses'),
-            //'user' => new UserResource($this->user),
         ];
     }
 }

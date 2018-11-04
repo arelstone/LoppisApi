@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::resource('auction-houses', 'AuctionHouseController');
+Route::resource('auction-houses/{auction_house}/reviews', 'ReviewsController')->only(['index', 'store']);
 Route::resource('users', 'UserController')->only(['show']);
 Route::post('login', 'UserController@login');
 Route::post('register', 'UserController@register');

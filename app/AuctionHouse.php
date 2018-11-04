@@ -11,6 +11,7 @@ class AuctionHouse extends Model
     protected $fillable = [
         'name',
         'address',
+        'desctiption',
         'address_co',
         'zip_code',
         'city',
@@ -19,8 +20,15 @@ class AuctionHouse extends Model
         'email'
     ];
 
+    public static function rating($id){
+        return Reviews::where('auction_house_id', $id)->get()->avg('rating');
+    }
 
     public function user(){
-        return $this->belongsTo('\App\User', 'user_id', 'id');
+        return $this->belongsTo('\App\User', 'user_id');
+    }
+
+    public function reviews(){
+        return $this->hasMany('\App\Reviews', 'auction_house_id');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Resources\User;
 
 use App\Http\Resources\BaseResource;
+use App\Http\Resources\ReviewResource;
 
 class UserResource extends BaseResource
 {
@@ -19,6 +20,7 @@ class UserResource extends BaseResource
             "name" => $this->name,
             "email" => $this->email,
             'meta' => $this->meta('users'),
+            'reviews' => ReviewResource::collection($this->whenLoaded('reviews')),
         ];
     }
 }
