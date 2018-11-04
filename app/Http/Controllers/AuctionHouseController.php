@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AuctionHouse;
 use Illuminate\Http\Request;
-use \App\Http\Requests\AuctionHouse\StoreAuctionHouseRequest;
-use \App\Http\Requests\AuctionHouse\UpdateAuctionHouseRequest;
+use \App\Http\Requests\AuctionHouse\AuctionHouseRequest;
 use \App\Http\Resources\AuctionHouseResource;
 
 class AuctionHouseController extends Controller
@@ -26,7 +25,7 @@ class AuctionHouseController extends Controller
         return new AuctionHouseResource($auctionHouse);
     }
 
-    public function store(StoreAuctionHouseRequest $request)
+    public function store(AuctionHouseRequest $request)
     {
         $auctionHouse = new AuctionHouse();
         $auctionHouse->fill($request->all());
@@ -36,7 +35,7 @@ class AuctionHouseController extends Controller
         return new AuctionHouseResource($auctionHouse);
     }
 
-    public function update(AuctionHouse $auctionHouse, UpdateAuctionHouseRequest $request)
+    public function update(AuctionHouse $auctionHouse, AuctionHouseRequest $request)
     {
         $auctionHouse->fill($request->all());
         $auctionHouse->save();

@@ -5,7 +5,7 @@ namespace App\Http\Requests\AuctionHouse;
 use \App\Http\Requests\BaseRequest;
 
 
-class StoreAuctionHouseRequest extends BaseRequest
+class AuctionHouseRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,16 @@ class StoreAuctionHouseRequest extends BaseRequest
      */
     public function authorize()
     {
-        return \Auth::user();
+        $exists = \App\AuctionHouse::exists($this->id);
+        $user = \Auth::user();
+
+        if ($this->method() === 'PUT' || $this->method() === 'PATCH') {
+            return $user
+                && $exists
+                && $user->id === $this->route('auction_house')->user_id;
+        }
+
+        return $user;
     }
 
     /**
