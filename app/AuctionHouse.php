@@ -11,7 +11,7 @@ class AuctionHouse extends Model
     protected $fillable = [
         'name',
         'address',
-        'desctiption',
+        'description',
         'address_co',
         'zip_code',
         'city',

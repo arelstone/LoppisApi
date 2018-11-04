@@ -19,7 +19,7 @@ class AuctionHouseResource extends BaseResource
         return [
             'id' => (int)$this->id,
             'name' => $this->name,
-            'description' => $this->desctiption,
+            'description' => $this->description,
             'address' => $this->address,
             'address_co' => $this->address_co,
             'zip_code' => $this->zip_code,

@@ -30,6 +30,11 @@ class StoreAuctionHouseRequest extends BaseRequest
                 'min:2',
                 'max:255'
             ],
+            'description' => [
+				'nullable',
+				'min:3',
+				'max:255'
+			],
             'address' => [
                 'required',
                 'min:2',
