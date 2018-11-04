@@ -18,10 +18,7 @@ class UserResource extends BaseResource
             "id" => (int)$this->id,
             "name" => $this->name,
             "email" => $this->email,
-            "meta" => [
-                "links" => $this->setUri('users'),
-                "dates" => $this->setDates(),
-            ],
+            'meta' => $this->meta('users'),
         ];
     }
 }

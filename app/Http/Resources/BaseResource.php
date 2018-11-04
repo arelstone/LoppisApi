@@ -6,15 +6,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class BaseResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function toArray($request)
+    public function meta($uri)
     {
-        return parent::toArray($request);
+        return [
+            "links" => $this->setUri($uri),
+            "dates" => $this->setDates(),
+        ];
     }
 
     public function setUri($uri)
@@ -24,7 +21,8 @@ class BaseResource extends JsonResource
         ];
     }
 
-    public function setDates(){
+    public function setDates()
+    {
         return [
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
