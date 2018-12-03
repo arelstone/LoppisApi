@@ -17,7 +17,7 @@ class AuctionHouseController extends Controller
 
     public function index()
     {
-        return AuctionHouseResource::collection(AuctionHouse::paginate());
+        return AuctionHouseResource::collection(AuctionHouse::with('reviews')->paginate(10));
     }
 
     public function show(AuctionHouse $auctionHouse)

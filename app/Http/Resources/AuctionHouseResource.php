@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Http\Resources\BaseResource;
 use App\Http\Resources\User\UserResource;
 use App\AuctionHouse;
+use App\Http\Requests\AuctionHouse\ReviewRequest;
 
 class AuctionHouseResource extends BaseResource
 {
@@ -28,6 +29,7 @@ class AuctionHouseResource extends BaseResource
             'email' => $this->email,
             'phone' => $this->phone,
             'rating' => AuctionHouse::rating($this->id),
+            'reviews' => ReviewResource::collection($this->whenLoaded('reviews')),
             'meta' => $this->meta('auction-houses'),
         ];
     }
