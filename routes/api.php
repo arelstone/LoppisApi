@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::resource('auction-houses', 'AuctionHouseController');
+Route::get('auction-houses/{auction_house}/logo', 'LogoController@show');
+Route::post('auction-houses/{auction_house}/logo', 'LogoController@store');
 Route::resource('auction-houses/{auction_house}/reviews', 'ReviewsController')->only(['index', 'store']);
 Route::resource('users', 'UserController')->only(['show']);
 Route::post('login', 'UserController@login');
